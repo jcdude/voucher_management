@@ -3,3 +3,20 @@
 ################################################################################
 
 /.vs/PTS
+/PTS.Application/bin/Debug/netcoreapp2.2
+/PTS.Application/obj/Debug/netcoreapp2.2
+/PTS.Application/obj
+/PTS.Common/bin/Debug/netcoreapp2.2
+/PTS.Common/obj/Debug/netcoreapp2.2
+/PTS.Common/obj
+/PTS.Domain/bin/Debug/netcoreapp2.2
+/PTS.Domain/obj/Debug/netcoreapp2.2
+/PTS.Domain/obj
+/PTS.Infrastructure/bin/Debug/netcoreapp2.2
+/PTS.Infrastructure/obj/Debug/netcoreapp2.2
+/PTS.Infrastructure/obj
+/PTS.Persistence/bin/Debug/netcoreapp2.2
+/PTS.Persistence/obj/Debug/netcoreapp2.2
+/PTS.Persistence/obj
+/PTS.WebApi/bin/Debug/netcoreapp2.2
+/PTS.WebApi/obj/Debug/netcoreapp2.2

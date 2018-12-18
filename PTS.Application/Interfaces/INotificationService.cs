@@ -1,10 +1,13 @@
-﻿using System;
+﻿using PTS.Application.Notifications.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PTS.Application.Interfaces
 {
-    class INotificationService
+    public interface INotificationService
     {
+        Task SendAsync(Message message);
     }
 }

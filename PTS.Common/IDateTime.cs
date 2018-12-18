@@ -2,7 +2,8 @@
 
 namespace PTS.Common
 {
-    public class Class1
+    public interface IDateTime
     {
+        DateTime Now { get; }
     }
 }
