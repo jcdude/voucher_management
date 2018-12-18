@@ -12,6 +12,8 @@ namespace PTS.Domain.Entities
         }
 
         public string CustomerId { get; set; }
+        public string Username { get; set; }
+        public byte[] Password { get; set; }
         public string CompanyName { get; set; }
         public string ContactName { get; set; }
         public string ContactTitle { get; set; }
