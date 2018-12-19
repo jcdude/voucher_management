@@ -29,7 +29,7 @@ namespace PTS.Application.Customer.Queries.Login
 
         public async Task<CustomerViewModel> Handle(LoginCustomerQuery request, CancellationToken cancellationToken)
         {
-            byte[] password = System.Text.Encoding.ASCII.GetBytes(request.Password);
+            byte[] password = Encoding.ASCII.GetBytes(request.Password);
 
             var entity = await _context.Customers
                 .Where(e =>
@@ -46,7 +46,8 @@ namespace PTS.Application.Customer.Queries.Login
             {
                 CustomerId = entity.CustomerId,
                 Password = entity.Password,
-                Username = entity.Username
+                Username = entity.Username,
+                ExternalId = entity.ExternalId
             };
         }
     }

@@ -9,5 +9,6 @@ namespace PTS.Application.Customer.Models
         public string CustomerId { get; set; }
         public string Username { get; set; }
         public byte[] Password { get; set; }
+        public Guid ExternalId { get; set; }
     }
 }
