@@ -8,10 +8,13 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using PTS.Domain.Entities;
+using System.Linq;
+using PTS.Application.Customer.Models;
 
 namespace PTS.Application.Customer.Queries.Login
 {
-    public class LoginCustomerQueryHandler : IRequestHandler<LoginCustomerQuery, Unit>
+    public class LoginCustomerQueryHandler : IRequestHandler<LoginCustomerQuery, CustomerViewModel>
     {
         private readonly PTSDbContext _context;
         private readonly INotificationService _notificationService;
@@ -24,18 +27,27 @@ namespace PTS.Application.Customer.Queries.Login
             _notificationService = notificationService;
         }
 
-        public async Task<Customer> Handle(LoginCustomerQuery request, CancellationToken cancellationToken)
+        public async Task<CustomerViewModel> Handle(LoginCustomerQuery request, CancellationToken cancellationToken)
         {
             byte[] password = System.Text.Encoding.ASCII.GetBytes(request.Password);
 
             var entity = await _context.Customers
-                .AnyAsync(e => e.Username == request.Username && e.Password == System.Security.Cryptography.MD5.Create().ComputeHash(password));
+                .Where(e =>
+                e.Username == request.Username
+                && e.Password == System.Security.Cryptography.MD5.Create().ComputeHash(password))
+                .FirstOrDefaultAsync(cancellationToken);
 
-            if (entity == null)
+            if (entity.Equals(null))
             {
-                throw new NotFoundException(nameof(Customer), request.Username);
+                throw new NotFoundException(nameof(entity), request.Username);
             }
 
-            return entity;
+            return new CustomerViewModel
+            {
+                CustomerId = entity.CustomerId,
+                Password = entity.Password,
+                Username = entity.Username
+            };
         }
+    }
 }
