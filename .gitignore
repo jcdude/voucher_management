@@ -20,3 +20,4 @@
 /PTS.Persistence/obj
 /PTS.WebApi/bin/Debug/netcoreapp2.2
 /PTS.WebApi/obj/Debug/netcoreapp2.2
+.vs
