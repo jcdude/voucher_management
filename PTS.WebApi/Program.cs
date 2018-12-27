@@ -21,7 +21,7 @@ namespace PTS.WebApi
            new WebHostBuilder()
                .UseKestrel()
                .UseContentRoot(Directory.GetCurrentDirectory())
-               .ConfigureAppConfiguration((hostingContext, config) =>
+               /*.ConfigureAppConfiguration((hostingContext, config) =>
                {
                    var env = hostingContext.HostingEnvironment;
                    config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -34,7 +34,7 @@ namespace PTS.WebApi
                    logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
                    logging.AddConsole();
                    logging.AddDebug();
-               })
+               })*/
                .UseStartup<Startup>();
     }
 }

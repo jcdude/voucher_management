@@ -10,7 +10,7 @@ namespace PTS.Domain.Infrastructure
     {
         // This size of the IV (in bytes) must = (keysize / 8).  Default keysize is 256, so the IV must be
         // 32 bytes long.  Using a 16 character string here gives us 32 bytes when converted to a byte array.
-        private const string initVector = "3890shdedx7s";
+        private const string initVector = "3890shdedx7sl3m0";
 
         private const string passPhrase = "jenism3m5h7";
         // This constant is used to determine the keysize of the encryption algorithm

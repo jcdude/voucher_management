@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PTS.Domain\PTS.Domain.csproj" />
+    <ProjectReference Include="..\PTS.Persistence\PTS.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

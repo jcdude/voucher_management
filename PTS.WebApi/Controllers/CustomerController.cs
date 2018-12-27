@@ -24,7 +24,7 @@ namespace PTS.WebApi.Controllers
         [HttpGet("{username}/{password}", Name = "Get")]
         public async Task<ActionResult<CustomerViewModel>> Login(string username, string password)
         {
-            return Ok(await Mediator.Send(new LoginCustomerQuery()));
+            return Ok(await Mediator.Send(new LoginCustomerQuery { Username = username,Password = password }));
         }
 
         // POST: api/Customer

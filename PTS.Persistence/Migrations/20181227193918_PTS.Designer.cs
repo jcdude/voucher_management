@@ -10,7 +10,7 @@ using PTS.Persistence;
 namespace PTS.Persistence.Migrations
 {
     [DbContext(typeof(PTSDbContext))]
-    [Migration("20181227192059_PTS")]
+    [Migration("20181227193918_PTS")]
     partial class PTS
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,7 +39,7 @@ namespace PTS.Persistence.Migrations
 
             modelBuilder.Entity("PTS.Domain.Entities.Customer", b =>
                 {
-                    b.Property<string>("CustomerId")
+                    b.Property<int>("CustomerId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address");
@@ -128,6 +128,8 @@ namespace PTS.Persistence.Migrations
 
                     b.Property<string>("CustomerId");
 
+                    b.Property<int?>("CustomerId1");
+
                     b.Property<int?>("EmployeeId");
 
                     b.Property<DateTime?>("OrderDate");
@@ -136,7 +138,7 @@ namespace PTS.Persistence.Migrations
 
                     b.HasKey("OrderId");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("CustomerId1");
 
                     b.HasIndex("EmployeeId");
 
@@ -256,7 +258,7 @@ namespace PTS.Persistence.Migrations
                 {
                     b.HasOne("PTS.Domain.Entities.Customer", "Customer")
                         .WithMany("Orders")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId1");
 
                     b.HasOne("PTS.Domain.Entities.Employee", "Employee")
                         .WithMany("Orders")

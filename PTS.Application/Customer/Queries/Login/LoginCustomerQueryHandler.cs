@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using PTS.Domain.Entities;
 using System.Linq;
 using PTS.Application.Customer.Models;
+using PTS.Domain.Infrastructure;
 
 namespace PTS.Application.Customer.Queries.Login
 {
@@ -29,12 +30,10 @@ namespace PTS.Application.Customer.Queries.Login
 
         public async Task<CustomerViewModel> Handle(LoginCustomerQuery request, CancellationToken cancellationToken)
         {
-            byte[] password = Encoding.ASCII.GetBytes(request.Password);
-
             var entity = await _context.Customers
                 .Where(e =>
                 e.Username == request.Username
-                && e.Password == System.Security.Cryptography.MD5.Create().ComputeHash(password))
+                && e.Password == Encypt.EncryptString(request.Password))
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (entity.Equals(null))
@@ -44,9 +43,6 @@ namespace PTS.Application.Customer.Queries.Login
 
             return new CustomerViewModel
             {
-                CustomerId = entity.CustomerId,
-                Password = entity.Password,
-                Username = entity.Username,
                 ExternalId = entity.ExternalId
             };
         }

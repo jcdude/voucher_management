@@ -27,7 +27,8 @@ namespace PTS.Persistence.Migrations
                 name: "Customers",
                 columns: table => new
                 {
-                    CustomerId = table.Column<string>(nullable: false),
+                    CustomerId = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Username = table.Column<string>(nullable: true),
                     Password = table.Column<byte[]>(nullable: true),
                     CompanyName = table.Column<string>(nullable: true),
@@ -130,14 +131,15 @@ namespace PTS.Persistence.Migrations
                     CustomerId = table.Column<string>(nullable: true),
                     EmployeeId = table.Column<int>(nullable: true),
                     OrderDate = table.Column<DateTime>(nullable: true),
-                    RequiredDate = table.Column<DateTime>(nullable: true)
+                    RequiredDate = table.Column<DateTime>(nullable: true),
+                    CustomerId1 = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Orders", x => x.OrderId);
                     table.ForeignKey(
-                        name: "FK_Orders_Customers_CustomerId",
-                        column: x => x.CustomerId,
+                        name: "FK_Orders_Customers_CustomerId1",
+                        column: x => x.CustomerId1,
                         principalTable: "Customers",
                         principalColumn: "CustomerId",
                         onDelete: ReferentialAction.Restrict);
@@ -226,9 +228,9 @@ namespace PTS.Persistence.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_CustomerId",
+                name: "IX_Orders_CustomerId1",
                 table: "Orders",
-                column: "CustomerId");
+                column: "CustomerId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_EmployeeId",

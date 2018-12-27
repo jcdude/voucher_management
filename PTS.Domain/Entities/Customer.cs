@@ -11,9 +11,9 @@ namespace PTS.Domain.Entities
             Orders = new HashSet<Order>();
         }
 
-        public string CustomerId { get; set; }
+        public int CustomerId { get; set; }
         public string Username { get; set; }
-        public byte[] Password { get; set; }
+        public string Password { get; set; }
         public string CompanyName { get; set; }
         public string ContactName { get; set; }
         public string ContactTitle { get; set; }

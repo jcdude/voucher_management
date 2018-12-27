@@ -1,0 +1,16 @@
+C:\Users\Jed\source\repos\PTS\PTS.TestApp\bin\Debug\netcoreapp2.2\PTS.TestApp.deps.json
+C:\Users\Jed\source\repos\PTS\PTS.TestApp\bin\Debug\netcoreapp2.2\PTS.TestApp.runtimeconfig.json
+C:\Users\Jed\source\repos\PTS\PTS.TestApp\bin\Debug\netcoreapp2.2\PTS.TestApp.runtimeconfig.dev.json
+C:\Users\Jed\source\repos\PTS\PTS.TestApp\bin\Debug\netcoreapp2.2\PTS.TestApp.dll
+C:\Users\Jed\source\repos\PTS\PTS.TestApp\bin\Debug\netcoreapp2.2\PTS.TestApp.pdb
+C:\Users\Jed\source\repos\PTS\PTS.TestApp\bin\Debug\netcoreapp2.2\PTS.Domain.dll
+C:\Users\Jed\source\repos\PTS\PTS.TestApp\bin\Debug\netcoreapp2.2\PTS.Persistence.dll
+C:\Users\Jed\source\repos\PTS\PTS.TestApp\bin\Debug\netcoreapp2.2\PTS.Domain.pdb
+C:\Users\Jed\source\repos\PTS\PTS.TestApp\bin\Debug\netcoreapp2.2\PTS.Persistence.pdb
+C:\Users\Jed\source\repos\PTS\PTS.TestApp\obj\Debug\netcoreapp2.2\PTS.TestApp.csprojAssemblyReference.cache
+C:\Users\Jed\source\repos\PTS\PTS.TestApp\obj\Debug\netcoreapp2.2\PTS.TestApp.csproj.CoreCompileInputs.cache
+C:\Users\Jed\source\repos\PTS\PTS.TestApp\obj\Debug\netcoreapp2.2\PTS.TestApp.AssemblyInfoInputs.cache
+C:\Users\Jed\source\repos\PTS\PTS.TestApp\obj\Debug\netcoreapp2.2\PTS.TestApp.AssemblyInfo.cs
+C:\Users\Jed\source\repos\PTS\PTS.TestApp\obj\Debug\netcoreapp2.2\PTS.TestApp.csproj.CopyComplete
+C:\Users\Jed\source\repos\PTS\PTS.TestApp\obj\Debug\netcoreapp2.2\PTS.TestApp.dll
+C:\Users\Jed\source\repos\PTS\PTS.TestApp\obj\Debug\netcoreapp2.2\PTS.TestApp.pdb
