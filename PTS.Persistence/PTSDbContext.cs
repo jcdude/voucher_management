@@ -8,9 +8,17 @@ namespace PTS.Persistence
 {
     public class PTSDbContext : DbContext
     {
+        public PTSDbContext() : base() { }
+
         public PTSDbContext(DbContextOptions<PTSDbContext> options)
             : base(options)
         {
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=pts;User Id=pts;Password=jed8703");
+            base.OnConfiguring(optionsBuilder);
         }
 
         public DbSet<Category> Categories { get; set; }
