@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="6.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
@@ -13,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PTS.Application\PTS.Application.csproj" />
+    <ProjectReference Include="..\PTS.Infrastructure\PTS.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
