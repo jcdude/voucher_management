@@ -22,7 +22,7 @@ namespace PTS.WebApi.Controllers
 
         // GET: api/Customer/username/password
         [HttpGet("{username}/{password}", Name = "Get")]
-        public async Task<ActionResult<CustomerViewModel>> Login(string username, string password)
+        public async Task<ActionResult<LoginCustomerViewModel>> Login(string username, string password)
         {
             return Ok(await Mediator.Send(new LoginCustomerQuery { Username = username,Password = password }));
         }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PTS.Application.Customer.Models
 {
-    public class CustomerViewModel
+    public class LoginCustomerViewModel
     {
         public Guid ExternalId { get; set; }
     }

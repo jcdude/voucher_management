@@ -25,6 +25,7 @@ namespace PTS.Domain.Entities
         public string Phone { get; set; }
         public string Fax { get; set; }
         public Guid ExternalId { get; set; }
+        public DateTime ExternalIdExpiry { get; set; }
 
         public ICollection<Order> Orders { get; private set; }
     }

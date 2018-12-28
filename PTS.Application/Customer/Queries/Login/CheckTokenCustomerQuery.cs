@@ -6,9 +6,9 @@ using System.Text;
 
 namespace PTS.Application.Customer.Queries.Login
 {
-    public class LoginCustomerQuery : IRequest<LoginCustomerViewModel>
+    public class CheckTokenCustomerQuery : IRequest<CheckTokenCustomerViewModel>
     {
         public string Username { get; set; }
-        public string Password { get; set; }
+        public Guid ExternalId { get; set; }
     }
 }

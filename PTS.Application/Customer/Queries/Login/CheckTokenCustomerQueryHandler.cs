@@ -15,12 +15,12 @@ using PTS.Domain.Infrastructure;
 
 namespace PTS.Application.Customer.Queries.Login
 {
-    public class LoginCustomerQueryHandler : IRequestHandler<LoginCustomerQuery, LoginCustomerViewModel>
+    public class CheckTokenCustomerQueryHandler : IRequestHandler<CheckTokenCustomerQuery, CheckTokenCustomerViewModel>
     {
         private readonly PTSDbContext _context;
         private readonly INotificationService _notificationService;
 
-        public LoginCustomerQueryHandler(
+        public CheckTokenCustomerQueryHandler(
             PTSDbContext context,
             INotificationService notificationService)
         {
@@ -28,28 +28,27 @@ namespace PTS.Application.Customer.Queries.Login
             _notificationService = notificationService;
         }
 
-        public async Task<LoginCustomerViewModel> Handle(LoginCustomerQuery request, CancellationToken cancellationToken)
+        public async Task<CheckTokenCustomerViewModel> Handle(CheckTokenCustomerQuery request, CancellationToken cancellationToken)
         {
             var entity = await _context.Customers
                 .Where(e =>
                 e.Username == request.Username
-                && e.Password == Encypt.EncryptString(request.Password))
+                && e.ExternalId == request.ExternalId
+                )
                 .FirstOrDefaultAsync(cancellationToken);
 
-            if (entity.Equals(null))
+            if (entity.Equals(null) || entity.ExternalIdExpiry >= DateTime.Now)
             {
-                throw new NotFoundException(nameof(entity), request.Username);
+                return new CheckTokenCustomerViewModel
+                {
+                    IsValid = false,
+                    ExternalId = request.ExternalId
+                };
             }
 
-            var expiryDate = DateTime.Now;
-            expiryDate.AddHours(2);
-
-            entity.ExternalIdExpiry = expiryDate;
-            _context.Update(entity);
-            await _context.SaveChangesAsync();
-
-            return new LoginCustomerViewModel
+            return new CheckTokenCustomerViewModel
             {
+                IsValid = true,
                 ExternalId = entity.ExternalId
             };
         }
