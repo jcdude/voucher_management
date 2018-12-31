@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PTS.Persistence;
@@ -9,9 +10,10 @@ using PTS.Persistence;
 namespace PTS.Persistence.Migrations
 {
     [DbContext(typeof(PTSDbContext))]
-    partial class PTSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181231141729_PTS_12312018_2")]
+    partial class PTS_12312018_2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -204,8 +206,6 @@ namespace PTS.Persistence.Migrations
                     b.Property<int>("ServiceId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CustomerId");
-
                     b.Property<string>("Pin");
 
                     b.Property<int>("StockId");
@@ -213,8 +213,6 @@ namespace PTS.Persistence.Migrations
                     b.Property<bool>("Used");
 
                     b.HasKey("ServiceId");
-
-                    b.HasIndex("CustomerId");
 
                     b.HasIndex("StockId");
 
@@ -313,11 +311,6 @@ namespace PTS.Persistence.Migrations
 
             modelBuilder.Entity("PTS.Domain.Entities.Service", b =>
                 {
-                    b.HasOne("PTS.Domain.Entities.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("PTS.Domain.Entities.Stock", "Stock")
                         .WithMany()
                         .HasForeignKey("StockId")

@@ -37,6 +37,8 @@ namespace PTS.Persistence
 
         public DbSet<Stock> Stocks { get; set; }
 
+        public DbSet<Service> Services { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(PTSDbContext).Assembly);

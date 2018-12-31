@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PTS.Persistence;
@@ -9,9 +10,10 @@ using PTS.Persistence;
 namespace PTS.Persistence.Migrations
 {
     [DbContext(typeof(PTSDbContext))]
-    partial class PTSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181231141404_PTS_12312018")]
+    partial class PTS_12312018
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -199,28 +201,6 @@ namespace PTS.Persistence.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("PTS.Domain.Entities.Service", b =>
-                {
-                    b.Property<int>("ServiceId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("CustomerId");
-
-                    b.Property<string>("Pin");
-
-                    b.Property<int>("StockId");
-
-                    b.Property<bool>("Used");
-
-                    b.HasKey("ServiceId");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("StockId");
-
-                    b.ToTable("Services");
-                });
-
             modelBuilder.Entity("PTS.Domain.Entities.Stock", b =>
                 {
                     b.Property<int>("StockId")
@@ -309,19 +289,6 @@ namespace PTS.Persistence.Migrations
                     b.HasOne("PTS.Domain.Entities.Supplier", "Supplier")
                         .WithMany("Products")
                         .HasForeignKey("SupplierId");
-                });
-
-            modelBuilder.Entity("PTS.Domain.Entities.Service", b =>
-                {
-                    b.HasOne("PTS.Domain.Entities.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("PTS.Domain.Entities.Stock", "Stock")
-                        .WithMany()
-                        .HasForeignKey("StockId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

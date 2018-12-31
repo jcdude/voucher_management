@@ -886,7 +886,7 @@
   },
   "libraries": {
     "Microsoft.CSharp/4.5.0": {
-      "sha512": "EGoBmf3Na2ppbhPePDE9PlX81r1HuOZH5twBrq7couJZiPTjUnD3648balerQJO6EJ8Sj+43+XuRwQ7r+3tE3w==",
+      "sha512": "kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
       "type": "package",
       "path": "microsoft.csharp/4.5.0",
       "files": [
@@ -1697,12 +1697,11 @@
       ]
     },
     "Remotion.Linq/2.2.0": {
-      "sha512": "twDAH8dAXXCAf3sRv1Tf94u66eEHvgU75hfn1nn2v4fSWXD50XoDOAk8WpSrbViNuMkB4kN1ElnOGm1c519IHg==",
+      "sha512": "fK/76UmpC0FXBlGDFVPLJHQlDLYnGC+XY3eoDgCgbtrhi0vzbXDQ3n/IYHhqSKqXQfGw/u04A1drWs7rFVkRjw==",
       "type": "package",
       "path": "remotion.linq/2.2.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "lib/net35/Remotion.Linq.XML",
         "lib/net35/Remotion.Linq.dll",
         "lib/net40/Remotion.Linq.XML",
@@ -1785,7 +1784,7 @@
       ]
     },
     "System.Collections.Immutable/1.5.0": {
-      "sha512": "RGxi2aQoXgZ5ge0zxrKqI4PU9LrYYoLC+cnEnWXKsSduCOUhE1GEAAoTexUVT8RZOILQyy1B27HC8Xw/XLGzdQ==",
+      "sha512": "EXKiDFsChZW0RjrZ4FYHu9aW6+P4MCgEDCklsVseRfhoO0F+dXeMSsMRAlVXIo06kGJ/zv+2w1a2uc2+kxxSaQ==",
       "type": "package",
       "path": "system.collections.immutable/1.5.0",
       "files": [
@@ -1808,7 +1807,7 @@
       ]
     },
     "System.ComponentModel.Annotations/4.5.0": {
-      "sha512": "IjDa643EO77A4CL9dhxfZ6zzGu+pM8Ar0NYPRMN3TvDiga4uGDzFHOj/ArpyNxxKyO5IFT2LZ0rK3kUog7g3jA==",
+      "sha512": "UxYQ3FGUOtzJ7LfSdnYSFd7+oEv6M8NgUatatIN2HxNtDdlcvFAf+VIq4Of9cDMJEJC0aSRv/x898RYhB4Yppg==",
       "type": "package",
       "path": "system.componentmodel.annotations/4.5.0",
       "files": [
@@ -1964,7 +1963,7 @@
       ]
     },
     "System.Diagnostics.DiagnosticSource/4.5.0": {
-      "sha512": "UumL3CJklk5WyEt0eImPmjeuyY1JgJ7Thmg2hAeZGKCv+9iuuAsoc2wcXjypdo3J8VNEmVCH2Bgn/kIw8NI2bA==",
+      "sha512": "eIHRELiYDQvsMToML81QFkXEEYXUSUT2F28t1SGrevWqP+epFdw80SyAXIKTXOHrIEXReFOEnEr7XlGiC2GgOg==",
       "type": "package",
       "path": "system.diagnostics.diagnosticsource/4.5.0",
       "files": [
@@ -2950,7 +2949,7 @@
       ]
     },
     "System.Runtime.CompilerServices.Unsafe/4.5.1": {
-      "sha512": "qUJMNWhbm9oZ3XaMFiEMiYmRPszbnXIkRIi7+4b2Md2xZ6JUOepf0/kY3S85qistRohl9OdMe4PsO+RdG2kTIQ==",
+      "sha512": "x/3d5xb+mc9e4I2GOOT+HPRWMZLbYjNN/kYKsb0fyUKcWizn/t1CIrGRLIBhv7H0ptYEt+WTTztdPmwSUMyKig==",
       "type": "package",
       "path": "system.runtime.compilerservices.unsafe/4.5.1",
       "files": [
@@ -3298,7 +3297,7 @@
       ]
     },
     "System.ValueTuple/4.5.0": {
-      "sha512": "xZtSZNEHGa+tGsKuP4sh257vxJ/yemShz4EusmomkynMzuEDDjVaErBNewpzEF6swUgbcrSQAX3ELsEp1zCOwA==",
+      "sha512": "okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
       "type": "package",
       "path": "system.valuetuple/4.5.0",
       "files": [
@@ -3360,23 +3359,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jed\\.nuget\\packages\\": {},
+    "C:\\Users\\Jed Laptop\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jed\\source\\repos\\PTS\\PTS.TestApp\\PTS.TestApp.csproj",
+      "projectUniqueName": "C:\\Users\\Jed Laptop\\source\\repos\\pointtech\\PTS.TestApp\\PTS.TestApp.csproj",
       "projectName": "PTS.TestApp",
-      "projectPath": "C:\\Users\\Jed\\source\\repos\\PTS\\PTS.TestApp\\PTS.TestApp.csproj",
-      "packagesPath": "C:\\Users\\Jed\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jed\\source\\repos\\PTS\\PTS.TestApp\\obj\\",
+      "projectPath": "C:\\Users\\Jed Laptop\\source\\repos\\pointtech\\PTS.TestApp\\PTS.TestApp.csproj",
+      "packagesPath": "C:\\Users\\Jed Laptop\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jed Laptop\\source\\repos\\pointtech\\PTS.TestApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Jed\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Jed Laptop\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3389,11 +3388,11 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\Jed\\source\\repos\\PTS\\PTS.Domain\\PTS.Domain.csproj": {
-              "projectPath": "C:\\Users\\Jed\\source\\repos\\PTS\\PTS.Domain\\PTS.Domain.csproj"
+            "C:\\Users\\Jed Laptop\\source\\repos\\pointtech\\PTS.Domain\\PTS.Domain.csproj": {
+              "projectPath": "C:\\Users\\Jed Laptop\\source\\repos\\pointtech\\PTS.Domain\\PTS.Domain.csproj"
             },
-            "C:\\Users\\Jed\\source\\repos\\PTS\\PTS.Persistence\\PTS.Persistence.csproj": {
-              "projectPath": "C:\\Users\\Jed\\source\\repos\\PTS\\PTS.Persistence\\PTS.Persistence.csproj"
+            "C:\\Users\\Jed Laptop\\source\\repos\\pointtech\\PTS.Persistence\\PTS.Persistence.csproj": {
+              "projectPath": "C:\\Users\\Jed Laptop\\source\\repos\\pointtech\\PTS.Persistence\\PTS.Persistence.csproj"
             }
           }
         }

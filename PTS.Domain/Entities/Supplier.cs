@@ -8,7 +8,7 @@ namespace PTS.Domain.Entities
     {
         public Supplier()
         {
-            Products = new HashSet<Product>();
+            Categories = new HashSet<Category>();
         }
 
         public int SupplierId { get; set; }
@@ -24,6 +24,6 @@ namespace PTS.Domain.Entities
         public string Fax { get; set; }
         public string HomePage { get; set; }
 
-        public ICollection<Product> Products { get; private set; }
+        public ICollection<Category> Categories { get; private set; }
     }
 }

@@ -8,11 +8,11 @@ namespace PTS.Domain.Entities
     {
         public int ServiceId { get; set; }
         public int StockId { get; set; }
+        public int CustomerId { get; set; }
         public bool Used { get; set; }
         public string Pin { get; set; }
-        public int OrderDetailId { get; set; }
-
-        public OrderDetail OrderDetail { get; set; }
+        
         public Stock Stock { get; set; }
+        public Customer Customer { get; set; }
     }
 }
