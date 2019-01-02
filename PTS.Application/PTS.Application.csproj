@@ -15,8 +15,8 @@
     <Folder Include="Customer\Commands\" />
     <Folder Include="Order\Models\" />
     <Folder Include="Order\Queries\" />
+    <Folder Include="Service\Queries\" />
     <Folder Include="Session\" />
-    <Folder Include="Service\" />
   </ItemGroup>
 
   <ItemGroup>
