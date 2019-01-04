@@ -23,6 +23,7 @@ namespace PTS.Domain.Entities
         public string Phone { get; set; }
         public string Fax { get; set; }
         public string HomePage { get; set; }
+        public Guid ExternalId { get; set; }
 
         public ICollection<Category> Categories { get; private set; }
     }
