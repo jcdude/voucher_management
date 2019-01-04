@@ -15,12 +15,12 @@ using PTS.Domain.Infrastructure;
 
 namespace PTS.Application.Product.Queries
 {
-    public class GetProductsBySupplierQueryHandler : IRequestHandler<GetProductsBySupplierQuery, GetProductsViewModel>
+    public class GetProductsByCategoryQueryHandler : IRequestHandler<GetProductsByCategoryQuery, GetProductsViewModel>
     {
         private readonly PTSDbContext _context;
         private readonly INotificationService _notificationService;
 
-        public GetProductsBySupplierQueryHandler(
+        public GetProductsByCategoryQueryHandler(
             PTSDbContext context,
             INotificationService notificationService)
         {
@@ -28,7 +28,7 @@ namespace PTS.Application.Product.Queries
             _notificationService = notificationService;
         }
 
-        public async Task<GetProductsViewModel> Handle(GetProductsBySupplierQuery request, CancellationToken cancellationToken)
+        public async Task<GetProductsViewModel> Handle(GetProductsByCategoryQuery request, CancellationToken cancellationToken)
         {
             var products = await (from category in _context.Categories
                                 join product in _context.Products
@@ -40,7 +40,7 @@ namespace PTS.Application.Product.Queries
                                 join customer in _context.Customers
                                 on service.CustomerId equals customer.CustomerId
                                 where customer.ExternalId == request.ExternalId
-                                && product.Supplier.ExternalId == request.SupplierExternalId
+                                && category.ExternalId == request.CategoryExternalId
                                 group product by new { product.ProductId,product.ProductName,customer } into groupedByProduct
                                 select new ProductDetails
                                 {

@@ -15,12 +15,12 @@ using PTS.Domain.Infrastructure;
 
 namespace PTS.Application.Product.Queries
 {
-    public class GetProductsBySupplierQueryHandler : IRequestHandler<GetProductsBySupplierQuery, GetProductsViewModel>
+    public class GetCategoriesBySupplierQueryHandler : IRequestHandler<GetCategoriesBySupplierQuery, GetCategoriesViewModel>
     {
         private readonly PTSDbContext _context;
         private readonly INotificationService _notificationService;
 
-        public GetProductsBySupplierQueryHandler(
+        public GetCategoriesBySupplierQueryHandler(
             PTSDbContext context,
             INotificationService notificationService)
         {
@@ -28,9 +28,9 @@ namespace PTS.Application.Product.Queries
             _notificationService = notificationService;
         }
 
-        public async Task<GetProductsViewModel> Handle(GetProductsBySupplierQuery request, CancellationToken cancellationToken)
+        public async Task<GetCategoriesViewModel> Handle(GetCategoriesBySupplierQuery request, CancellationToken cancellationToken)
         {
-            var products = await (from category in _context.Categories
+            var categories = await (from category in _context.Categories
                                 join product in _context.Products
                                 on category.CategoryId equals product.CategoryId
                                 join stock in _context.Stocks
@@ -42,15 +42,15 @@ namespace PTS.Application.Product.Queries
                                 where customer.ExternalId == request.ExternalId
                                 && product.Supplier.ExternalId == request.SupplierExternalId
                                 group product by new { product.ProductId,product.ProductName,customer } into groupedByProduct
-                                select new ProductDetails
+                                select new CategoryDetails
                                 {
-                                    ProductId = groupedByProduct.Key.ProductId,
-                                    ProductName = groupedByProduct.Key.ProductName,
+                                    CategoryId = groupedByProduct.Key.ProductId,
+                                    CategoryName = groupedByProduct.Key.ProductName,
                                     Customer = groupedByProduct.Key.customer
                                 }).ToListAsync();
 
 
-            if (products.Equals(null))
+            if (categories.Equals(null))
             {
                 throw new NotFoundException("Products", request.ExternalId);
             }
@@ -58,14 +58,14 @@ namespace PTS.Application.Product.Queries
             var expiryDate = DateTime.Now;
             expiryDate.AddHours(9);
 
-            var customerForUpdate = products.First().Customer;
+            var customerForUpdate = categories.First().Customer;
             customerForUpdate.ExternalIdExpiry = expiryDate;
             _context.Update(customerForUpdate);
             await _context.SaveChangesAsync();
 
-            return new GetProductsViewModel
+            return new GetCategoriesViewModel
             {
-                Products = products
+                Categories = categories
             };
         }
     }
