@@ -41,6 +41,7 @@ namespace PTS.Application.Service.Queries.Login
                                     join customer in _context.Customers
                                     on service.CustomerId equals customer.CustomerId
                                     where service.Customer.ExternalId == request.ExternalId
+                                    && service.Customer.ExternalIdExpiry == DateTime.Now
                                     select new 
                                     {
                                         Pin = Encypt.DecryptString(stock.Pin),
