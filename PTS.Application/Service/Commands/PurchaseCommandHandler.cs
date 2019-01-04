@@ -44,7 +44,7 @@ namespace PTS.Application.Service.Queries.Login
                                     && service.Customer.ExternalIdExpiry == DateTime.Now
                                     select new 
                                     {
-                                        Pin = Encypt.DecryptString(stock.Pin),
+                                        stock.Pin,
                                         Customer = customer,
                                         StockItem = stock
                                     }).FirstAsync();
@@ -68,7 +68,7 @@ namespace PTS.Application.Service.Queries.Login
 
             return new PurchaseViewModel
             {
-                Pin = data.Pin
+                Pin = Encypt.DecryptString(data.Pin)
             };
         }
     }
