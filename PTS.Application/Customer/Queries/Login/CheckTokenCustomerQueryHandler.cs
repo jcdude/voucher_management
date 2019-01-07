@@ -31,13 +31,12 @@ namespace PTS.Application.Customer.Queries.Login
         public async Task<CheckTokenCustomerViewModel> Handle(CheckTokenCustomerQuery request, CancellationToken cancellationToken)
         {
             var entity = await _context.Customers
-                .Where(e =>
-                e.Username == request.Username
-                && e.ExternalId == request.ExternalId
+                .Where(e => e.ExternalId == request.ExternalId
+                && e.ExternalIdExpiry >= DateTime.Now
                 )
                 .FirstOrDefaultAsync(cancellationToken);
 
-            if (entity.Equals(null) || entity.ExternalIdExpiry >= DateTime.Now)
+            if (entity.Equals(null))
             {
                 return new CheckTokenCustomerViewModel
                 {

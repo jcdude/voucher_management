@@ -41,7 +41,8 @@ namespace PTS.Application.Product.Queries
                                 on service.CustomerId equals customer.CustomerId
                                 where customer.ExternalId == request.ExternalId
                                 && category.ExternalId == request.CategoryExternalId
-                                group product by new { product.ProductId,product.ProductName,customer } into groupedByProduct
+                                && service.Customer.ExternalIdExpiry == DateTime.Now
+                                  group product by new { product.ProductId,product.ProductName,customer } into groupedByProduct
                                 select new ProductDetails
                                 {
                                     ProductId = groupedByProduct.Key.ProductId,

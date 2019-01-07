@@ -40,7 +40,8 @@ namespace PTS.Application.Product.Queries
                                 join customer in _context.Customers
                                 on service.CustomerId equals customer.CustomerId
                                 where service.Customer.ExternalId == request.ExternalId
-                                select new CategoryDetails
+                                && service.Customer.ExternalIdExpiry == DateTime.Now
+                                    select new CategoryDetails
                                 {
                                     CategoryId = category.CategoryId,
                                     CategoryName = category.CategoryName,
