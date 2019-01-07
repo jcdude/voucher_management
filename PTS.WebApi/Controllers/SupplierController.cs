@@ -14,7 +14,7 @@ namespace PTS.WebApi.Controllers
     public class SupplierController : BaseController
     {
         // GET: api/Supplier/Available
-        [HttpGet("Available/{token}", Name = "Get")]
+        [HttpGet("Available/{token}", Name = "Available")]
         public async Task<ActionResult<GetSuppliersViewModel>> Login(Guid token)
         {
             return Ok(await Mediator.Send(new GetSuppliersQuery { ExternalId = token }));

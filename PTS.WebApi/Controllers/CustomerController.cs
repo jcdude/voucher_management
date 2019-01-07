@@ -28,7 +28,7 @@ namespace PTS.WebApi.Controllers
         }
 
         // GET: api/Customer/CheckToken/{token}
-        [HttpGet("CheckToken/{token}", Name = "Get")]
+        [HttpGet("CheckToken/{token}", Name = "CheckToken")]
         public async Task<ActionResult<CheckTokenCustomerViewModel>> Login(Guid token)
         {
             return Ok(await Mediator.Send(new CheckTokenCustomerQuery { ExternalId = token }));

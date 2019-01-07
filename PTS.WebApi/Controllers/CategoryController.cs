@@ -14,7 +14,7 @@ namespace PTS.WebApi.Controllers
     public class CategoryController : BaseController
     {
         // GET: api/Supplier/BySupplier
-        [HttpGet("BySupplier/{token}/{supplierToken}", Name = "Get")]
+        [HttpGet("BySupplier/{token}/{supplierToken}", Name = "BySupplier")]
         public async Task<ActionResult<GetCategoriesViewModel>> Login(Guid token,Guid supplierToken)
         {
             return Ok(await Mediator.Send(new GetCategoriesBySupplierQuery { ExternalId = token,SupplierExternalId = supplierToken }));
