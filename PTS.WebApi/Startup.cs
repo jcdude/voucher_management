@@ -54,13 +54,16 @@ namespace PTS.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            else
             {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
+                app.UseForwardedHeaders(new ForwardedHeadersOptions
+                {
+                    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+                });
 
-            app.UseAuthentication();
+                app.UseAuthentication();
+            }
+           
 
             app.UseMvc();
         }
