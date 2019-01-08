@@ -17,6 +17,7 @@ using PTS.Persistence;
 using PTS.Application.Interfaces;
 using PTS.Infrastructure;
 using PTS.Common;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace PTS.WebApi
 {
@@ -54,6 +55,12 @@ namespace PTS.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
+            app.UseAuthentication();
 
             app.UseMvc();
         }
