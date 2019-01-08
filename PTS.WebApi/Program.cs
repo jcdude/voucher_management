@@ -35,22 +35,7 @@ namespace PTS.WebApi
                    logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
                    logging.AddConsole();
                    logging.AddDebug();
-               })*/
-               .ConfigureKestrel((context, options) =>
-               {
-                   var env = context.HostingEnvironment;
-                   if (!env.IsDevelopment())
-                   {
-                       options.Limits.MaxConcurrentConnections = 100;
-                       options.Limits.MaxConcurrentUpgradedConnections = 100;
-                       options.Limits.MaxRequestBodySize = 10 * 1024;
-                       options.Listen(IPAddress.Loopback, 5000);
-                       options.Listen(IPAddress.Loopback, 5001, listenOptions =>
-                       {
-                           listenOptions.UseHttps("/etc/letsencrypt/live/api.pointtechsol.com/cert.pfx", "certApi");
-                       });
-                   }
-               })
+               })*/               
                .UseStartup<Startup>();
     }
 }
