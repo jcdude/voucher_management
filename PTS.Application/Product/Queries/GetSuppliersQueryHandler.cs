@@ -49,7 +49,7 @@ namespace PTS.Application.Product.Queries
                                 }).ToListAsync();
 
 
-            if (suppliers.Equals(null))
+            if (suppliers.Equals(null) || suppliers.Count == 0)
             {
                 throw new NotFoundException("Suppliers", request.ExternalId);
             }

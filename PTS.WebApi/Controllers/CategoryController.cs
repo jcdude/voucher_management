@@ -13,7 +13,7 @@ namespace PTS.WebApi.Controllers
     [ApiController]
     public class CategoryController : BaseController
     {
-        // GET: api/Supplier/BySupplier
+        // GET: api/Category/BySupplier
         [HttpGet("BySupplier/{token}/{supplierToken}", Name = "BySupplier")]
         public async Task<ActionResult<GetCategoriesViewModel>> Login(Guid token,Guid supplierToken)
         {

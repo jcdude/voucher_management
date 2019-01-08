@@ -51,7 +51,7 @@ namespace PTS.Application.Product.Queries
                                 }).ToListAsync();
 
 
-            if (categories.Equals(null))
+            if (categories.Equals(null) || categories.Count == 0)
             {
                 throw new NotFoundException("Products", request.ExternalId);
             }
