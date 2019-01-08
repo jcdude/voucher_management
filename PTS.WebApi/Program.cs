@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
@@ -35,6 +36,21 @@ namespace PTS.WebApi
                    logging.AddConsole();
                    logging.AddDebug();
                })*/
+               .ConfigureKestrel((context, options) =>
+               {
+                   var env = context.HostingEnvironment;
+                   if (!env.IsDevelopment())
+                   {
+                       options.Limits.MaxConcurrentConnections = 100;
+                       options.Limits.MaxConcurrentUpgradedConnections = 100;
+                       options.Limits.MaxRequestBodySize = 10 * 1024;
+                       options.Listen(IPAddress.Loopback, 5000);
+                       options.Listen(IPAddress.Loopback, 5001, listenOptions =>
+                       {
+                           listenOptions.UseHttps("/etc/letsencrypt/live/api.pointtechsol.com/cert.pfx", "certApi");
+                       });
+                   }
+               })
                .UseStartup<Startup>();
     }
 }

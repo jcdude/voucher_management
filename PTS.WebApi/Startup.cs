@@ -42,7 +42,7 @@ namespace PTS.WebApi
 
             // Add DbContext using SQL Server Provider
             services.AddDbContext<PTSDbContext>();
-
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -53,6 +53,7 @@ namespace PTS.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
 
             app.UseMvc();
         }
