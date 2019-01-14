@@ -1,0 +1,11 @@
+ service kestrel-pts stop
+ 
+ cd /opt/PTS/pointtech/
+
+ git fetch --all
+
+ git reset --hard origin/master
+
+ dotnet publish --configuration Release
+
+ service kestrel-pts start
