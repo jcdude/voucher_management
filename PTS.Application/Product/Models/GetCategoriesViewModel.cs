@@ -14,6 +14,5 @@ namespace PTS.Application.Product.Models
     {
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
-        public Domain.Entities.Customer Customer { get; set; }
     }
 }

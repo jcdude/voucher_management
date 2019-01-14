@@ -41,12 +41,12 @@ namespace PTS.Application.Product.Queries
                                 on service.CustomerId equals customer.CustomerId
                                 where service.Customer.ExternalId == request.ExternalId
                                 && service.Customer.ExternalIdExpiry == DateTime.Now
-                                    select new CategoryDetails
+                                    select new
                                 {
                                     CategoryId = category.CategoryId,
                                     CategoryName = category.CategoryName,
-                                    Customer = customer
-                                }).ToListAsync();
+                                        customer.CustomerId
+                                    }).ToListAsync();
 
 
             if (categories.Equals(null) || categories.Count == 0)
@@ -54,17 +54,19 @@ namespace PTS.Application.Product.Queries
                 throw new NotFoundException("Categories", request.ExternalId);
             }
 
+            var customerForUpdate = await _context.Customers.FirstOrDefaultAsync(c => c.CustomerId == categories.First().CustomerId);
+
             var expiryDate = DateTime.Now;
             expiryDate.AddHours(9);
 
-            var customerForUpdate = categories.First().Customer;
             customerForUpdate.ExternalIdExpiry = expiryDate;
             _context.Update(customerForUpdate);
             await _context.SaveChangesAsync();
 
             return new GetCategoriesViewModel
             {
-                Categories = categories
+                Categories = (from categoryDetails in categories
+                              select new CategoryDetails { CategoryId = categoryDetails.CategoryId, CategoryName = categoryDetails.CategoryName }).ToList()
             };
         }
     }
