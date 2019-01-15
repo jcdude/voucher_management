@@ -41,14 +41,16 @@ namespace PTS.Application.Product.Queries
                                 on service.CustomerId equals customer.CustomerId
                                 where customer.ExternalId == request.ExternalId
                                 && product.Supplier.ExternalId == request.SupplierExternalId
-                                && service.Customer.ExternalIdExpiry == DateTime.Now
-                                    group product by new { product.ProductId,product.ProductName,customer } into groupedByProduct
-                                select new CategoryDetails
+                                && service.Customer.ExternalIdExpiry >= DateTime.Now
+                                    group product by new { category.CategoryId,category.Description,customer.CustomerId } into groupedByProduct
+                                    select 
+                                new 
                                 {
-                                    CategoryId = groupedByProduct.Key.ProductId,
-                                    CategoryName = groupedByProduct.Key.ProductName,
-                                    Customer = groupedByProduct.Key.customer
-                                }).ToListAsync();
+                                    CategoryId = groupedByProduct.Key.CategoryId,
+                                    CategoryName = groupedByProduct.Key.Description,
+                                    groupedByProduct.Key.CustomerId
+                                }
+                                ).ToListAsync();
 
 
             if (categories.Equals(null) || categories.Count == 0)
@@ -56,17 +58,19 @@ namespace PTS.Application.Product.Queries
                 throw new NotFoundException("Products", request.ExternalId);
             }
 
+            var customerForUpdate = await _context.Customers.FirstOrDefaultAsync(c => c.CustomerId == categories.First().CustomerId);
+
             var expiryDate = DateTime.Now;
             expiryDate.AddHours(9);
 
-            var customerForUpdate = categories.First().Customer;
             customerForUpdate.ExternalIdExpiry = expiryDate;
             _context.Update(customerForUpdate);
             await _context.SaveChangesAsync();
 
             return new GetCategoriesViewModel
             {
-                Categories = categories
+                Categories = (from categoryDetails in categories
+                             select new CategoryDetails { CategoryId = categoryDetails.CategoryId, CategoryName = categoryDetails.CategoryName }).ToList()
             };
         }
     }

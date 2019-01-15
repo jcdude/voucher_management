@@ -17,6 +17,8 @@ namespace PTS.Persistence
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            //Server=localhost;Port=5432;Database=pts;User Id=pts;Password=jed8703
+            //optionsBuilder.UseNpgsql("Server=localhost;Port=12345;Database=pts;User Id=pts;Password=jed8703");
             optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=pts;User Id=pts;Password=jed8703");
             base.OnConfiguring(optionsBuilder);
         }

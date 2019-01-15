@@ -18,7 +18,7 @@ namespace PTS.TestApp
 
             using (var db = new PTSDbContext())
             {
-                db.Add(admin);
+                db.Remove(admin);
                 db.SaveChanges();
             }
 

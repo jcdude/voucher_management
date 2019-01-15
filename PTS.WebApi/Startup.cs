@@ -17,7 +17,6 @@ using PTS.Persistence;
 using PTS.Application.Interfaces;
 using PTS.Infrastructure;
 using PTS.Common;
-using Microsoft.AspNetCore.HttpOverrides;
 
 namespace PTS.WebApi
 {
@@ -48,14 +47,13 @@ namespace PTS.WebApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-           
-
+            loggerFactory.AddConsole();
             app.UseMvc();
         }
     }

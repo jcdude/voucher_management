@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{C87B20C0-ABD8-404B-9793-D639E6BA01DE}"
+	ProjectSection(SolutionItems) = preProject
+		Deploy.txt = Deploy.txt
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{AF062B6B-F40A-48E1-A7C0-3956B82E1F48}"
 EndProject
@@ -27,7 +30,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTS.Persistence", "PTS.Pers
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTS.WebApi", "PTS.WebApi\PTS.WebApi.csproj", "{7BD4AD4B-EABE-408B-8BD5-9FC5A655AB28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTS.TestApp", "PTS.TestApp\PTS.TestApp.csproj", "{EED3D692-143B-4F5F-8796-B59AF4DBCC58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTS.TestApp", "PTS.TestApp\PTS.TestApp.csproj", "{EED3D692-143B-4F5F-8796-B59AF4DBCC58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
