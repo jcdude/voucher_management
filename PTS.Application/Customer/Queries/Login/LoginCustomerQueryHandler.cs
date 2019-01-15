@@ -42,8 +42,9 @@ namespace PTS.Application.Customer.Queries.Login
             }
 
             var expiryDate = DateTime.Now;
-            expiryDate.AddHours(2);
+            expiryDate = expiryDate.AddHours(9);
 
+            entity.ExternalId = Guid.NewGuid();
             entity.ExternalIdExpiry = expiryDate;
             _context.Update(entity);
             await _context.SaveChangesAsync();
