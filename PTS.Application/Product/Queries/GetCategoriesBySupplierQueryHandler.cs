@@ -61,7 +61,7 @@ namespace PTS.Application.Product.Queries
             var customerForUpdate = await _context.Customers.FirstOrDefaultAsync(c => c.CustomerId == categories.First().CustomerId);
 
             var expiryDate = DateTime.Now;
-            expiryDate.AddHours(9);
+            expiryDate = expiryDate.AddHours(9);
 
             customerForUpdate.ExternalIdExpiry = expiryDate;
             _context.Update(customerForUpdate);
