@@ -36,7 +36,7 @@ namespace PTS.Application.Customer.Queries.Login
                 )
                 .FirstOrDefaultAsync(cancellationToken);
 
-            if (entity.Equals(null))
+            if (entity == null)
             {
                 return new CheckTokenCustomerViewModel
                 {
