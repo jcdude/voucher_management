@@ -53,7 +53,7 @@ namespace PTS.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+            loggerFactory.AddFile("/var/log/pts-{Date}.txt");
             app.UseMvc();
         }
     }
