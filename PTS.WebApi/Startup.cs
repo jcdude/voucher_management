@@ -53,7 +53,7 @@ namespace PTS.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
-            loggerFactory.AddConsole();
+            
             app.UseMvc();
         }
     }
