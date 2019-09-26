@@ -1,0 +1,52 @@
+2019-01-15T12:22:44.5876833-05:00 0HLJR1O7O8835:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/values   (ca22a1cb)
+2019-01-15T12:22:44.6920009-05:00 0HLJR1O7O8835:00000001 [INF] Executing endpoint '"PTS.WebApi.Controllers.ValuesController.Get (PTS.WebApi)"' (500cc934)
+2019-01-15T12:22:44.7398620-05:00 0HLJR1O7O8835:00000001 [INF] Route matched with "{action = \"Get\", controller = \"Values\"}". Executing action "PTS.WebApi.Controllers.ValuesController.Get (PTS.WebApi)" (a44c0341)
+2019-01-15T12:22:44.7700899-05:00 0HLJR1O7O8835:00000001 [INF] Executing action method "PTS.WebApi.Controllers.ValuesController.Get (PTS.WebApi)" - Validation state: Valid (dad538d7)
+2019-01-15T12:22:44.7824527-05:00 0HLJR1O7O8835:00000001 [INF] Executed action method "PTS.WebApi.Controllers.ValuesController.Get (PTS.WebApi)", returned result "Microsoft.AspNetCore.Mvc.ObjectResult" in 0.4262ms. (50a9e262)
+2019-01-15T12:22:44.8034145-05:00 0HLJR1O7O8835:00000001 [INF] Executing ObjectResult, writing value of type '"System.String[]"'. (8a1b66c8)
+2019-01-15T12:22:44.9384121-05:00 0HLJR1O7O8835:00000001 [INF] Executed action "PTS.WebApi.Controllers.ValuesController.Get (PTS.WebApi)" in 190.8603ms (afa2e885)
+2019-01-15T12:22:44.9472913-05:00 0HLJR1O7O8835:00000001 [INF] Executed endpoint '"PTS.WebApi.Controllers.ValuesController.Get (PTS.WebApi)"' (99874f2b)
+2019-01-15T12:22:45.0160375-05:00 0HLJR1O7O8835:00000001 [INF] Request finished in 408.1981ms 200 application/json; charset=utf-8 (791a596a)
+2019-01-15T12:22:48.9169641-05:00 0HLJR1O7O8835:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Category/BySupplier/c89ed4ad-d58a-4444-942a-d8ef3eb8a262/d1b286a1-0b2b-4a0a-9102-6ff11d3dabb3   (ca22a1cb)
+2019-01-15T12:22:48.9229343-05:00 0HLJR1O7O8835:00000002 [INF] Executing endpoint '"PTS.WebApi.Controllers.CategoryController.Login (PTS.WebApi)"' (500cc934)
+2019-01-15T12:22:48.9434615-05:00 0HLJR1O7O8835:00000002 [INF] Route matched with "{action = \"Login\", controller = \"Category\"}". Executing action "PTS.WebApi.Controllers.CategoryController.Login (PTS.WebApi)" (a44c0341)
+2019-01-15T12:22:48.9727652-05:00 0HLJR1O7O8835:00000002 [INF] Executing action method "PTS.WebApi.Controllers.CategoryController.Login (PTS.WebApi)" with arguments (["c89ed4ad-d58a-4444-942a-d8ef3eb8a262", "d1b286a1-0b2b-4a0a-9102-6ff11d3dabb3"]) - Validation state: Valid (4e3479ed)
+2019-01-15T12:22:53.4545426-05:00 0HLJR1O7O8835:00000002 [INF] Entity Framework Core "2.2.0-rtm-35687" initialized '"PTSDbContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None" (9958f5bb)
+2019-01-15T12:22:54.6520472-05:00 0HLJR1O7O8835:00000002 [INF] Executed DbCommand ("17"ms) [Parameters=["@__request_ExternalId_0='?' (DbType = Guid), @__request_SupplierExternalId_1='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT category.\"CategoryId\", category.\"Description\" AS \"CategoryName\", customer.\"CustomerId\"
+FROM \"Categories\" AS category
+INNER JOIN \"Products\" AS product ON category.\"CategoryId\" = product.\"CategoryId\"
+LEFT JOIN \"Suppliers\" AS \"product.Supplier\" ON product.\"SupplierId\" = \"product.Supplier\".\"SupplierId\"
+INNER JOIN \"Stocks\" AS stock ON product.\"ProductId\" = stock.\"ProductId\"
+INNER JOIN \"Services\" AS service ON stock.\"StockId\" = service.\"StockId\"
+INNER JOIN \"Customers\" AS \"service.Customer\" ON service.\"CustomerId\" = \"service.Customer\".\"CustomerId\"
+INNER JOIN \"Customers\" AS customer ON service.\"CustomerId\" = customer.\"CustomerId\"
+WHERE ((customer.\"ExternalId\" = @__request_ExternalId_0) AND (\"product.Supplier\".\"ExternalId\" = @__request_SupplierExternalId_1)) AND (\"service.Customer\".\"ExternalIdExpiry\" >= NOW())
+GROUP BY category.\"CategoryId\", category.\"Description\", customer.\"CustomerId\"" (0723d8ff)
+2019-01-15T12:23:04.7356957-05:00 0HLJR1O7O8835:00000002 [INF] Executed action "PTS.WebApi.Controllers.CategoryController.Login (PTS.WebApi)" in 15790.3474ms (afa2e885)
+2019-01-15T12:23:04.7394553-05:00 0HLJR1O7O8835:00000002 [INF] Executed endpoint '"PTS.WebApi.Controllers.CategoryController.Login (PTS.WebApi)"' (99874f2b)
+2019-01-15T12:23:04.7901436-05:00 0HLJR1O7O8835:00000002 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+PTS.Domain.Exceptions.NotFoundException: Entity "Products" (c89ed4ad-d58a-4444-942a-d8ef3eb8a262) was not found.
+   at PTS.Application.Product.Queries.GetCategoriesBySupplierQueryHandler.Handle(GetCategoriesBySupplierQuery request, CancellationToken cancellationToken) in C:\Users\Jed\source\repos\PTS\PTS.Application\Product\Queries\GetCategoriesBySupplierQueryHandler.cs:line 61
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at PTS.WebApi.Controllers.CategoryController.Login(Guid token, Guid supplierToken) in C:\Users\Jed\source\repos\PTS\PTS.WebApi\Controllers\CategoryController.cs:line 20
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-01-15T12:23:04.9064223-05:00 0HLJR1O7O8835:00000002 [INF] Request finished in 15969.977ms 500 text/html; charset=utf-8 (791a596a)
